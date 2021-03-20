@@ -101,6 +101,10 @@
   '(bar window-number modals matches buffer-info buffer-position word-count parrot selection-info)
   '(objed-state misc-info battery irc-buffers debug minor-modes input-method indent-info buffer-encoding major-mode process))
 
+(doom-modeline-def-modeline 'dired
+  '(bar window-number matches buffer-info-dired)
+  '(misc-info battery irc mu4e gnus github debug minor-modes input-method major-mode process))
+
 (doom-modeline-def-modeline 'project
   '(bar window-number buffer-default-directory)
   '(misc-info battery irc mu4e gnus github debug minor-modes input-method major-mode process))
@@ -171,6 +175,11 @@ If DEFAULT is non-nil, set the default mode-line for all buffers."
 (defun doom-modeline-set-special-modeline ()
   "Set special mode-line."
   (doom-modeline-set-modeline 'special))
+
+;;;###autoload
+(defun doom-modeline-set-dired-modeline ()
+  "Set dired mode-line."
+  (doom-modeline-set-modeline 'dired))
 
 ;;;###autoload
 (defun doom-modeline-set-project-modeline ()

@@ -269,7 +269,7 @@ If DEFAULT is non-nil, set the default mode-line for all buffers."
 
         ;; Add hooks
         (add-hook 'Info-mode-hook #'doom-modeline-set-info-modeline)
-        (add-hook 'dired-mode-hook #'doom-modeline-set-project-modeline)
+        (add-hook 'dired-mode-hook #'doom-modeline-set-dired-modeline)
         (add-hook 'dashboard-mode-hook #'doom-modeline-set-dashboard-modeline)
         (add-hook 'image-mode-hook #'doom-modeline-set-media-modeline)
         (add-hook 'message-mode-hook #'doom-modeline-set-message-modeline)
@@ -299,7 +299,7 @@ If DEFAULT is non-nil, set the default mode-line for all buffers."
 
       ;; Remove hooks
       (remove-hook 'Info-mode-hook #'doom-modeline-set-info-modeline)
-      (remove-hook 'dired-mode-hook #'doom-modeline-set-project-modeline)
+      (remove-hook 'dired-mode-hook #'doom-modeline-set-dired-modeline)
       (remove-hook 'dashboard-mode-hook #'doom-modeline-set-dashboard-modeline)
       (remove-hook 'image-mode-hook #'doom-modeline-set-media-modeline)
       (remove-hook 'message-mode-hook #'doom-modeline-set-message-modeline)

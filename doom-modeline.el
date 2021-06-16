@@ -105,6 +105,10 @@
   '(bar window-number matches buffer-info-dired)
   '(misc-info battery irc mu4e gnus github debug minor-modes input-method major-mode process))
 
+(doom-modeline-def-modeline 'bookmark
+  '(bar window-number matches buffer-info-simple)
+  '(input-method bmenu major-mode))
+
 (doom-modeline-def-modeline 'project
   '(bar window-number buffer-default-directory)
   '(misc-info battery irc mu4e gnus github debug minor-modes input-method major-mode process))

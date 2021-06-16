@@ -105,6 +105,7 @@
 (defvar tracking-buffers)
 (defvar winum-auto-setup-mode-line)
 (defvar xah-fly-insert-state-q)
+(defvar bookmark-bmenu-mode-map)
 
 (declare-function anzu--reset-status 'anzu)
 (declare-function anzu--where-is-here 'anzu)
@@ -236,6 +237,7 @@
 (declare-function winum--clear-mode-line 'winum)
 (declare-function winum--install-mode-line 'winum)
 (declare-function winum-get-number-string 'winum)
+(declare-function bmkp-bmenu-mode-line-string 'bookmark+-bmu)
 
 
 

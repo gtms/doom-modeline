@@ -123,7 +123,7 @@
 
 (doom-modeline-def-modeline 'info
   '(bar window-number buffer-info info-nodes buffer-position parrot selection-info)
-  '(misc-info buffer-encoding major-mode))
+  '(buffer-encoding major-mode))
 
 (doom-modeline-def-modeline 'media
   '(bar window-number buffer-size buffer-info)

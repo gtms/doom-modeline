@@ -240,6 +240,11 @@ If DEFAULT is non-nil, set the default mode-line for all buffers."
   "Set timemachine mode-line."
   (doom-modeline-set-modeline 'timemachine))
 
+;;;###autoload
+(defun doom-modeline-set-bookmark-modeline ()
+  "Set bookmark mode-line."
+  (doom-modeline-set-modeline 'bookmark))
+
 
 ;;
 ;; Minor mode

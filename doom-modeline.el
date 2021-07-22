@@ -292,6 +292,10 @@ If DEFAULT is non-nil, set the default mode-line for all buffers."
         (add-hook 'git-timemachine-mode-hook #'doom-modeline-set-timemachine-modeline)
         (add-hook 'paradox-menu-mode-hook #'doom-modeline-set-package-modeline)
         (add-hook 'xwidget-webkit-mode-hook #'doom-modeline-set-minimal-modeline)
+        (add-hook 'ivy-occur-grep-mode-hook #'doom-modeline-set-minimal-modeline)
+        (add-hook 'bookmark-edit-annotation-mode-hook #'doom-modeline-set-minimal-modeline)
+        (add-hook 'bmkp-edit-bookmark-record-mode-hook #'doom-modeline-set-minimal-modeline)
+        (add-hook 'bmkp-edit-bookmark-records-mode-hook #'doom-modeline-set-minimal-modeline)
 
         ;; Add advices
         (advice-add #'helm-display-mode-line :after #'doom-modeline-set-helm-modeline))
@@ -322,6 +326,10 @@ If DEFAULT is non-nil, set the default mode-line for all buffers."
       (remove-hook 'git-timemachine-mode-hook #'doom-modeline-set-timemachine-modeline)
       (remove-hook 'paradox-menu-mode-hook #'doom-modeline-set-package-modeline)
       (remove-hook 'xwidget-webkit-mode-hook #'doom-modeline-set-minimal-modeline)
+      (remove-hook 'ivy-occur-grep-mode-hook #'doom-modeline-set-minimal-modeline)
+      (remove-hook 'bookmark-edit-annotation-mode-hook #'doom-modeline-set-minimal-modeline)
+      (remove-hook 'bmkp-edit-bookmark-record-mode-hook #'doom-modeline-set-minimal-modeline)
+      (remove-hook 'bmkp-edit-bookmark-records-mode-hook #'doom-modeline-set-minimal-modeline)
 
       ;; Remove advices
       (advice-remove #'helm-display-mode-line #'doom-modeline-set-helm-modeline))))

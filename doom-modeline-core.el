@@ -34,6 +34,8 @@
 (require 'all-the-icons)
 (require 'shrink-path)
 
+(eval-when-compile
+  (require 'calendar))
 
 ;;
 ;; Compatibility

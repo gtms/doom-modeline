@@ -305,6 +305,8 @@ If DEFAULT is non-nil, set the default mode-line for all buffers."
         (add-hook 'bookmark-edit-annotation-mode-hook #'doom-modeline-set-minimal-modeline)
         (add-hook 'bmkp-edit-bookmark-record-mode-hook #'doom-modeline-set-minimal-modeline)
         (add-hook 'bmkp-edit-bookmark-records-mode-hook #'doom-modeline-set-minimal-modeline)
+        (add-hook 'calendar-initial-window-hook #'doom-modeline-set-calendar-modeline)
+        (add-hook 'calendar-move-hook #'doom-modeline-set-calendar-modeline)
 
         ;; Add advices
         (advice-add #'helm-display-mode-line :after #'doom-modeline-set-helm-modeline))
@@ -339,6 +341,8 @@ If DEFAULT is non-nil, set the default mode-line for all buffers."
       (remove-hook 'bookmark-edit-annotation-mode-hook #'doom-modeline-set-minimal-modeline)
       (remove-hook 'bmkp-edit-bookmark-record-mode-hook #'doom-modeline-set-minimal-modeline)
       (remove-hook 'bmkp-edit-bookmark-records-mode-hook #'doom-modeline-set-minimal-modeline)
+      (remove-hook 'calendar-initial-window-hook #'doom-modeline-set-calendar-modeline)
+      (remove-hook 'calendar-move-hook #'doom-modeline-set-calendar-modeline)
 
       ;; Remove advices
       (advice-remove #'helm-display-mode-line #'doom-modeline-set-helm-modeline))))

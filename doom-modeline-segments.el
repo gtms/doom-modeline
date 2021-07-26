@@ -492,6 +492,33 @@ buffer where knowing the current project directory is important."
                          (doom-modeline-vspc)))
             (propertize (abbreviate-file-name default-directory) 'face face))))
 
+(doom-modeline-def-segment cal
+  "The cal segment.  This segment holds the propertized string
+processed by the function `calendar-update-mode-line', defined in
+the `calendar.el' library."
+  (let ((segment
+         (concat
+          (doom-modeline-spc)
+          (if (and calendar-mode-line-format
+                   (bufferp (get-buffer calendar-buffer)))
+              (with-current-buffer calendar-buffer
+                (let ((start (- calendar-left-margin 2)))
+                  (calendar-dlet* ((date (condition-case nil
+                                             (calendar-cursor-to-nearest-date)
+                                           (error (calendar-current-date)))))
+                    (concat (make-string (max 0 (+ start
+                                                   (- (car (window-inside-edges))
+                                                      (car (window-edges)))))
+                                         ?\s)
+                            (calendar-string-spread
+                             calendar-mode-line-format
+                             ?\s (- calendar-right-margin (1- start))))))))
+          (doom-modeline-spc))))
+    (if (doom-modeline--active)
+        segment
+      (propertize
+       segment
+       'face 'mode-line-inactive))))
 
 ;;
 ;; Encoding

@@ -109,6 +109,10 @@
   '(bar window-number matches buffer-info-simple)
   '(input-method bmenu major-mode))
 
+(doom-modeline-def-modeline 'calendar
+  '(bar window-number buffer-info-simple cal)
+  '(input-method major-mode))
+
 (doom-modeline-def-modeline 'project
   '(bar window-number buffer-default-directory)
   '(misc-info battery irc mu4e gnus github debug minor-modes input-method major-mode process))
@@ -244,6 +248,11 @@ If DEFAULT is non-nil, set the default mode-line for all buffers."
 (defun doom-modeline-set-bookmark-modeline ()
   "Set bookmark mode-line."
   (doom-modeline-set-modeline 'bookmark))
+
+;;;###autoload
+(defun doom-modeline-set-calendar-modeline ()
+  "Set calendar mode-line."
+  (doom-modeline-set-modeline 'calendar))
 
 
 ;;

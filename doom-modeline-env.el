@@ -5,20 +5,18 @@
 ;; This file is not part of GNU Emacs.
 
 ;;
-;; This program is free software; you can redistribute it and/or
-;; modify it under the terms of the GNU General Public License as
-;; published by the Free Software Foundation; either version 2, or
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
 ;; (at your option) any later version.
 ;;
 ;; This program is distributed in the hope that it will be useful,
 ;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-;; General Public License for more details.
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
 ;;
 ;; You should have received a copy of the GNU General Public License
-;; along with this program; see the file COPYING.  If not, write to
-;; the Free Software Foundation, Inc., 51 Franklin Street, Fifth
-;; Floor, Boston, MA 02110-1301, USA.
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ;;
 ;;; Commentary:
 ;;
@@ -35,14 +33,14 @@
 (defvar python-shell-interpreter)
 
 
-;; Customizations
+;; Customization
 
 (defgroup doom-modeline-env nil
-  "The environment parser for doom-modeline."
+  "The environment parser for `doom-modeline'."
   :group 'doom-modeline
   :link '(url-link :tag "Homepage" "https://github.com/seagle0128/doom-modeline"))
 
-(defcustom doom-modeline-env-load-string "..."
+(defcustom doom-modeline-env-load-string doom-modeline-ellipsis
   "What to display as the version while a new one is being loaded."
   :type 'string
   :group 'doom-modeline-env)
@@ -71,11 +69,11 @@ Example: \"ruby\"")
 
 (defvar-local doom-modeline-env--command-args nil
   "A list of arguments for the command to extract the version from.
-Example: '(\"--version\") ")
+Example: \\='(\"--version\")")
 
 (defvar-local doom-modeline-env--parser nil
   "A function that returns version number from a command --version (or similar).
-Example: 'doom-modeline-env--ruby")
+Example: \\='doom-modeline-env--ruby")
 
 
 ;; Functions & Macros
@@ -117,23 +115,24 @@ passes on the information into the CALLBACK.
 Example:
   (doom-modeline-env--get
      \"ruby\"
-     '(\"--version\")
+     \\='(\"--version\")
      (lambda (line)
         (message (doom-modeline-parser--ruby line)))"
-  (let ((proc (apply 'start-process
-                     ;; Flaten process-args into a single list so we can handle
-                     ;; variadic length args
-                     (append
-                      (list "doom-modeline-env" nil prog)
-                      args)))
-        (parser callback))
+  (when-let ((proc (ignore-errors
+                     (apply 'start-process
+                            ;; Flaten process-args into a single list so we can handle
+                            ;; variadic length args
+                            (append
+                             (list "doom-modeline-env" nil prog)
+                             args))))
+             (parser callback))
     (set-process-filter proc
                         (lambda (_proc line)
                           (ignore-errors
                             (funcall parser line))))))
 
 (cl-defmacro doom-modeline-def-env (name &key hooks command parser)
-  "Defines a handler for updating & displaying a version string for a language.
+  "Define a handler for updating & displaying a version string for a language.
 
 NAME is an unquoted symbol representing the handler's unique ID.
 HOOKS is a list of hook symbols where this handler should be triggered.
@@ -215,7 +214,7 @@ PARSER should be a function for parsing COMMAND's output line-by-line, to
                                   "python")
                               "--version"))))
   :parser  (lambda (line) (let ((version (split-string line)))
-                       (if (>= (length version) 2)
+                       (if (length> version 1)
                            (cadr version)
                          (car version)))))
 
@@ -258,7 +257,7 @@ PARSER should be a function for parsing COMMAND's output line-by-line, to
 ;;;###autoload (autoload 'doom-modeline-env-setup-elixir "doom-modeline-env")
 (doom-modeline-def-env elixir
   :hooks   'elixir-mode-hook
-  :command (lambda () (list (or doom-modeline-env-elixir-executable "iex") "--version"))
+  :command (lambda () (list (or doom-modeline-env-elixir-executable "elixir") "--version"))
   :parser  (lambda (line) (cadr (split-string line))))
 
 ;;;###autoload (autoload 'doom-modeline-env-setup-rust "doom-modeline-env")

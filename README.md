@@ -1,21 +1,23 @@
 # doom-modeline
 
 [![Build Status](https://github.com/seagle0128/doom-modeline/workflows/CI/badge.svg?branch=master)](https://github.com/seagle0128/doom-modeline/actions)
+[![Release Tag](https://img.shields.io/github/tag/seagle0128/doom-modeline.svg?label=Release)](https://github.com/seagle0128/doom-modeline/release)
+[![License](http://img.shields.io/:License-GPL3-blue.svg)](License)
 [![MELPA](https://melpa.org/packages/doom-modeline-badge.svg)](https://melpa.org/#/doom-modeline)
 [![MELPA Stable](https://stable.melpa.org/packages/doom-modeline-badge.svg)](https://stable.melpa.org/#/doom-modeline)
-[![License](http://img.shields.io/:license-gpl3-blue.svg)](LICENSE)
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-**Table of Contents**
 
-- [doom-modeline](#doom-modeline)
-    - [Feature](#feature)
-    - [Screenshots](#screenshots)
-    - [Install](#install)
-        - [Manual](#manual)
-        - [Use-package](#use-package)
-    - [Customize](#customize)
-    - [FAQ](#faq)
+## Table of Contents
+
+- [Feature](#feature)
+- [Screenshots](#screenshots)
+- [Install](#install)
+  - [Manual](#manual)
+  - [Use-package](#use-package)
+- [Customize](#customize)
+- [FAQ](#faq)
+- [Donate](#donate)
 
 <!-- markdown-toc end -->
 
@@ -30,7 +32,7 @@ Emacs](https://github.com/hlissner/doom-emacs) and
 The `doom-modeline` was designed for minimalism, and offers:
 
 - A match count panel (for `anzu`, `iedit`, `multiple-cursors`, `symbol-overlay`,
-  `evil-search` and `evil-substitute`)
+  and `evil-search`, etc.)
 - An indicator for recording a macro
 - Current environment version (e.g. `python`, `ruby`, `go`, etc.) in the major-mode
 - A customizable mode-line height (see `doom-modeline-height`)
@@ -63,71 +65,51 @@ The `doom-modeline` was designed for minimalism, and offers:
 
 ## Screenshots
 
-![modeline](https://user-images.githubusercontent.com/140797/49694177-10dcd280-fbc0-11e8-8d21-971ede6afdb5.png
- "Mode-line")
+![modeline](https://user-images.githubusercontent.com/140797/49694177-10dcd280-fbc0-11e8-8d21-971ede6afdb5.png "Mode-line")
 
-![search_replace](https://user-images.githubusercontent.com/140797/49694189-6913d480-fbc0-11e8-93ae-9578455dcd2c.png
-"Search and Replace")
+![search_replace](https://user-images.githubusercontent.com/140797/49694189-6913d480-fbc0-11e8-93ae-9578455dcd2c.png "Search and Replace")
 
-![macro](https://user-images.githubusercontent.com/140797/49694199-cc056b80-fbc0-11e8-9bb1-533b1e64da66.png
-"Macro")
+![evil_search](https://user-images.githubusercontent.com/140797/162925065-0ffe40fd-1efd-469b-bf09-c62fe2d22fd2.png "Evil Search")
 
-![no_icons](https://user-images.githubusercontent.com/140797/51301117-0805d900-1a69-11e9-957d-b4c7a70a1cf8.png
-"No Icons")
+![macro](https://user-images.githubusercontent.com/140797/49694199-cc056b80-fbc0-11e8-9bb1-533b1e64da66.png "Macro")
 
-![color_icon_cpp](https://user-images.githubusercontent.com/140797/50414928-3c63ec00-0853-11e9-9b26-6a1df278d332.png
-"Color C++ icon")
+![no_icons](https://user-images.githubusercontent.com/140797/51301117-0805d900-1a69-11e9-957d-b4c7a70a1cf8.png "No Icons")
 
-![color_icon_java](https://user-images.githubusercontent.com/140797/50415081-1428bd00-0854-11e9-9ae5-91805290c524.png
-"Color Java icon")
+![color_icon_cpp](https://user-images.githubusercontent.com/140797/50414928-3c63ec00-0853-11e9-9b26-6a1df278d332.png "Color C++ icon")
 
-![color_icon_elisp](https://user-images.githubusercontent.com/140797/50415381-9f568280-0855-11e9-9478-34a6dd614d96.png
-"Color Elisp icon")
+![color_icon_java](https://user-images.githubusercontent.com/140797/50415081-1428bd00-0854-11e9-9ae5-91805290c524.png "Color Java icon")
 
-![evil_normal_state_icon](https://user-images.githubusercontent.com/140797/68990534-332aa600-088f-11ea-920f-20c9527a6466.png
-"Evil Normal State icon")
+![color_icon_elisp](https://user-images.githubusercontent.com/140797/50415381-9f568280-0855-11e9-9478-34a6dd614d96.png "Color Elisp icon")
 
-![evil_insert_state_icon](https://user-images.githubusercontent.com/140797/68990540-4dfd1a80-088f-11ea-8e53-ab77af4c58c2.png
-"Evil Insert State icon")
+![evil_normal_state_icon](https://user-images.githubusercontent.com/140797/68990534-332aa600-088f-11ea-920f-20c9527a6466.png "Evil Normal State icon")
 
-![evil_normal_state](https://user-images.githubusercontent.com/140797/49694476-b8103880-fbc5-11e8-9c18-91f5e9258333.png
-"Evil Normal State")
+![evil_insert_state_icon](https://user-images.githubusercontent.com/140797/68990540-4dfd1a80-088f-11ea-8e53-ab77af4c58c2.png "Evil Insert State icon")
 
-![evil_insert_state](https://user-images.githubusercontent.com/140797/49694461-8b5c2100-fbc5-11e8-993e-d97baa9f01af.png
-"Evil Insert State")
+![evil_normal_state](https://user-images.githubusercontent.com/140797/49694476-b8103880-fbc5-11e8-9c18-91f5e9258333.png "Evil Normal State")
 
-![lsp_version](https://user-images.githubusercontent.com/140797/53592864-c751c180-3bc9-11e9-9914-493007c013d5.png
-"Perspective, LSP, Version, VCS and Flycheck")
+![evil_insert_state](https://user-images.githubusercontent.com/140797/49694461-8b5c2100-fbc5-11e8-993e-d97baa9f01af.png "Evil Insert State")
 
-![perspective](https://user-images.githubusercontent.com/140797/49694481-e0983280-fbc5-11e8-8cb2-c8d2e782bcdb.png
- "Perspective, LSP, Version and VCS")
+![lsp_version](https://user-images.githubusercontent.com/140797/53592864-c751c180-3bc9-11e9-9914-493007c013d5.png "Perspective, LSP, Version, VCS and Flycheck")
 
-![notifications](https://user-images.githubusercontent.com/140797/53592683-64602a80-3bc9-11e9-8054-91f79aa930b9.png
-"Notifications")
+![perspective](https://user-images.githubusercontent.com/140797/49694481-e0983280-fbc5-11e8-8cb2-c8d2e782bcdb.png "Perspective, LSP, Version and VCS")
 
-![minions](https://user-images.githubusercontent.com/140797/50301291-de857c00-04c1-11e9-84c5-bfbc8de8295f.png
-"Minions and minor modes")
+![notifications](https://user-images.githubusercontent.com/140797/53592683-64602a80-3bc9-11e9-8054-91f79aa930b9.png "Notifications")
 
-![debug](https://user-images.githubusercontent.com/140797/50302008-c57dca80-04c3-11e9-8578-50154ef4f9f0.png
-"Debug state")
+![minions](https://user-images.githubusercontent.com/140797/50301291-de857c00-04c1-11e9-84c5-bfbc8de8295f.png "Minions and minor modes")
 
-![nyan_parrot](https://user-images.githubusercontent.com/140797/51301061-da209480-1a68-11e9-9f64-905d889df9d6.png
-"Nyan and Parrot")
+![debug](https://user-images.githubusercontent.com/140797/50302008-c57dca80-04c3-11e9-8578-50154ef4f9f0.png "Debug state")
 
-![irc](https://user-images.githubusercontent.com/140797/69004814-20c67000-0954-11ea-8489-f5a527a80574.png
-"IRC Notifications")
+![nyan_parrot](https://user-images.githubusercontent.com/140797/51301061-da209480-1a68-11e9-9f64-905d889df9d6.png "Nyan and Parrot")
 
-![battery](https://user-images.githubusercontent.com/140797/53593622-ba35d200-3bcb-11e9-85b3-38d64d05c127.png
-"Battery")
+![irc](https://user-images.githubusercontent.com/140797/69004814-20c67000-0954-11ea-8489-f5a527a80574.png "IRC Notifications")
 
-![package](https://user-images.githubusercontent.com/140797/57503916-e769d380-7324-11e9-906d-44c79f7408a3.png
-"Package")
+![battery](https://user-images.githubusercontent.com/140797/53593622-ba35d200-3bcb-11e9-85b3-38d64d05c127.png "Battery")
 
-![info](https://user-images.githubusercontent.com/140797/57506248-d96c8080-732d-11e9-8167-644c8fc4e0db.png
-"Info")
+![package](https://user-images.githubusercontent.com/140797/57503916-e769d380-7324-11e9-906d-44c79f7408a3.png "Package")
 
-![helm](https://user-images.githubusercontent.com/140797/57506112-6531dd00-732d-11e9-8a5e-22166f42dd4c.png
-"Helm")
+![info](https://user-images.githubusercontent.com/140797/57506248-d96c8080-732d-11e9-8167-644c8fc4e0db.png "Info")
+
+![helm](https://user-images.githubusercontent.com/140797/57506112-6531dd00-732d-11e9-8a5e-22166f42dd4c.png "Helm")
 
 ## Install
 
@@ -137,34 +119,51 @@ From melpa, `M-x package-install RET doom-modeline RET`.
 
 In `init.el`,
 
-``` emacs-lisp
+```emacs-lisp
 (require 'doom-modeline)
 (doom-modeline-mode 1)
 ```
+
 or
 
-``` elisp
+```elisp
 (add-hook 'after-init-hook #'doom-modeline-mode)
 ```
 
 ### Use-package
 
-``` emacs-lisp
+```emacs-lisp
 (use-package doom-modeline
   :ensure t
   :init (doom-modeline-mode 1))
 ```
+
 or
 
-``` elisp
+```elisp
 (use-package doom-modeline
   :ensure t
   :hook (after-init . doom-modeline-mode))
 ```
 
-This package requires the fonts included with `all-the-icons` to be installed.
-Run `M-x all-the-icons-install-fonts` to do so. Please refer to the
+This package is able to display icons if `all-the-icons` package and required
+fonts are installed. Run `M-x all-the-icons-install-fonts` to install the
+necessary fonts. Please refer to the
 [installation guide](https://github.com/domtronn/all-the-icons.el#installation).
+
+Add this to `init.el` if you want to use icons,
+
+```elisp
+;; Install via `M-x package-install RET all-the-icons RET`
+(require 'all-the-icons)
+```
+
+or
+
+```elisp
+(use-package all-the-icons
+  :ensure t)
+```
 
 Strongly recommend to use
 [doom-themes](https://github.com/hlissner/emacs-doom-themes) at the same time.
@@ -173,7 +172,13 @@ Strongly recommend to use
 
 Run `M-x customize-group RET doom-modeline RET` or set the variables.
 
-``` emacs-lisp
+```emacs-lisp
+;; If non-nil, cause imenu to see `doom-modeline' declarations.
+;; This is done by adjusting `lisp-imenu-generic-expression' to
+;; include support for finding `doom-modeline-def-*' forms.
+;; Must be set before loading doom-modeline.
+(setq doom-modeline-support-imenu t)
+
 ;; How tall the mode-line should be. It's only respected in GUI.
 ;; If the actual char height is larger, it respects the actual height.
 (setq doom-modeline-height 25)
@@ -182,25 +187,25 @@ Run `M-x customize-group RET doom-modeline RET` or set the variables.
 (setq doom-modeline-bar-width 4)
 
 ;; Whether to use hud instead of default bar. It's only respected in GUI.
-(defcustom doom-modeline-hud nil)
+(setq doom-modeline-hud nil)
 
 ;; The limit of the window width.
-;; If `window-width' is smaller than the limit, some information won't be displayed.
-(setq doom-modeline-window-width-limit fill-column)
+;; If `window-width' is smaller than the limit, some information won't be
+;; displayed. It can be an integer or a float number. `nil' means no limit."
+(setq doom-modeline-window-width-limit 85)
 
 ;; How to detect the project root.
-;; The default priority of detection is `ffip' > `projectile' > `project'.
 ;; nil means to use `default-directory'.
 ;; The project management packages have some issues on detecting project root.
 ;; e.g. `projectile' doesn't handle symlink folders well, while `project' is unable
 ;; to hanle sub-projects.
 ;; You can specify one if you encounter the issue.
-(setq doom-modeline-project-detection 'project)
+(setq doom-modeline-project-detection 'auto)
 
 ;; Determines the style used by `doom-modeline-buffer-file-name'.
 ;;
 ;; Given ~/Projects/FOSS/emacs/lisp/comint.el
-;;   auto => emacs/lisp/comint.el (in a project) or comint.el
+;;   auto => emacs/l/comint.el (in a project) or comint.el
 ;;   truncate-upto-project => ~/P/F/emacs/lisp/comint.el
 ;;   truncate-from-project => ~/Projects/FOSS/emacs/l/comint.el
 ;;   truncate-with-project => emacs/l/comint.el
@@ -220,7 +225,7 @@ Run `M-x customize-group RET doom-modeline RET` or set the variables.
 
 ;; Whether display icons in the mode-line.
 ;; While using the server mode in GUI, should set the value explicitly.
-(setq doom-modeline-icon (display-graphic-p))
+(setq doom-modeline-icon t)
 
 ;; Whether display the icon for `major-mode'. It respects `doom-modeline-icon'.
 (setq doom-modeline-major-mode-icon t)
@@ -236,8 +241,17 @@ Run `M-x customize-group RET doom-modeline RET` or set the variables.
 ;; It respects `doom-modeline-icon' and `doom-modeline-buffer-state-icon'.
 (setq doom-modeline-buffer-modification-icon t)
 
+;; Whether display the time icon. It respects variable `doom-modeline-icon'.
+(setq doom-modeline-time-icon t)
+
 ;; Whether to use unicode as a fallback (instead of ASCII) when not using icons.
 (setq doom-modeline-unicode-fallback nil)
+
+;; Whether display the buffer name.
+(setq doom-modeline-buffer-name t)
+
+;; Whether highlight the modified buffer name.
+(setq doom-modeline-highlight-modified-buffer-name t)
 
 ;; Whether display the minor modes in the mode-line.
 (setq doom-modeline-minor-modes nil)
@@ -287,17 +301,23 @@ Run `M-x customize-group RET doom-modeline RET` or set the variables.
 ;; The interval of checking GitHub.
 (setq doom-modeline-github-interval (* 30 60))
 
+;; Whether display the modal state.
+;; Including `evil', `overwrite', `god', `ryo' and `xah-fly-keys', etc.
+(setq doom-modeline-modal t)
+
 ;; Whether display the modal state icon.
 ;; Including `evil', `overwrite', `god', `ryo' and `xah-fly-keys', etc.
 (setq doom-modeline-modal-icon t)
 
 ;; Whether display the mu4e notifications. It requires `mu4e-alert' package.
 (setq doom-modeline-mu4e nil)
+;; also enable the start of mu4e-alert
+(mu4e-alert-enable-mode-line-display)
 
 ;; Whether display the gnus notifications.
 (setq doom-modeline-gnus t)
 
-;; Wheter gnus should automatically be updated and how often (set to 0 or smaller than 0 to disable)
+;; Whether gnus should automatically be updated and how often (set to 0 or smaller than 0 to disable)
 (setq doom-modeline-gnus-timer 2)
 
 ;; Wheter groups should be excludede when gnus automatically being updated.
@@ -308,6 +328,16 @@ Run `M-x customize-group RET doom-modeline RET` or set the variables.
 
 ;; Function to stylize the irc buffer names.
 (setq doom-modeline-irc-stylize 'identity)
+
+;; Whether display the battery status. It respects `display-battery-mode'.
+(setq doom-modeline-battery t)
+
+;; Whether display the time. It respects `display-time-mode'.
+(setq doom-modeline-time t)
+
+;; Whether display the misc segment on all mode lines.
+;; If nil, display only if the mode line is active.
+(setq doom-modeline-display-misc-in-all-mode-lines t)
 
 ;; Whether display the environment version.
 (setq doom-modeline-env-version t)
@@ -330,6 +360,10 @@ Run `M-x customize-group RET doom-modeline RET` or set the variables.
 ;; What to display as the version while a new one is being loaded
 (setq doom-modeline-env-load-string "...")
 
+;; By default, almost all segments are displayed only in the active window. To
+;; display such segments in all windows, specify e.g.
+(setq doom-modeline-always-visible-segments '(mu4e irc))
+
 ;; Hooks that run before/after the modeline version string is updated
 (setq doom-modeline-before-update-env-hook nil)
 (setq doom-modeline-after-update-env-hook nil)
@@ -339,48 +373,51 @@ Run `M-x customize-group RET doom-modeline RET` or set the variables.
 
 1. How to display icons correctly?
 
-    [all-the-icons](https://github.com/domtronn/all-the-icons.el) are necessary.
-    Run `M-x all-the-icons-install-fonts` to install the resource fonts. On
-    Windows, the fonts should be installed manually. `all-the-icons` only
-    support GUI. If you don't like color icons, `(setq all-the-icons-color-icons
-    nil)` to disable it. Please refer to
-    [all-the-icons.el](https://github.com/domtronn/all-the-icons.el) for
-    details.
+   [all-the-icons](https://github.com/domtronn/all-the-icons.el) are necessary.
+   Then run `M-x all-the-icons-install-fonts` to install the resource fonts.
+   On Windows, the fonts should be installed manually. `all-the-icons` only
+   support GUI. If you don't like color icons, `(setq all-the-icons-color-icons nil)`
+   to disable it. Please refer to [all-the-icons.el](https://github.com/domtronn/all-the-icons.el)
+   for details.
 
-    If the icons are not displayed correctly although `all-the-icons` fonts are
-    installed correctly, please install the
-    [non-free](http://users.teilar.gr/~g1951d/License.pdf) font
-    [Symbola](https://dn-works.com/wp-content/uploads/2020/UFAS-Fonts/Symbola.zip).
-    This issue usually occurs on Windows.
+   If the icons are not displayed correctly although `all-the-icons` fonts are
+   installed correctly, please install the
+   [non-free](http://users.teilar.gr/~g1951d/License.pdf) font
+   [Symbola](https://dn-works.com/wp-content/uploads/2020/UFAS-Fonts/Symbola.zip).
+   This issue usually occurs on Windows.
 
-    If you are using [cnfonts](https://github.com/tumashu/cnfonts), it will
-    conflict with `all-the-icons`. The workaround is
-    [here](https://github.com/seagle0128/doom-modeline/issues/278#issuecomment-569510336).
+   If you are using [cnfonts](https://github.com/tumashu/cnfonts), it will
+   conflict with `all-the-icons`. The workaround is
+   [here](https://github.com/seagle0128/doom-modeline/issues/278#issuecomment-569510336).
+
+   In terminal mode, no icons or bars will be displayed, even though `all-the-icons`
+   fonts are installed successfully, and `doom-modeline-icon` is non-nil.
 
 1. I am experiencing the laggy issue, how to resolve it?
 
    Add this configuration into your init file:
 
-   ``` emacs-lisp
+   ```emacs-lisp
    ;; Don’t compact font caches during GC.
    (setq inhibit-compacting-font-caches t)
    ```
 
 1. A ridiculous path is displayed on the mode-line while visiting a symbolink.
 
-    It's the default behaviors of Vanilla Emacs. If you want to display the real
-    names, please put this into your init file.
+   It's the default behaviors of Vanilla Emacs. If you want to display the real
+   names, please put this into your init file.
 
-    ``` emacs-lisp
-    (setq find-file-visit-truename t)
-    ```
+   ```emacs-lisp
+   (setq find-file-visit-truename t)
+   ```
 
-    If the file is controlled by vc, refer to the documentation of
-    `vc-follow-symlinks`.
+   If the file is controlled by vc, refer to the documentation of
+   `vc-follow-symlinks`.
 
 1. Why doesn't change of branch reflect in modeline?
 
    Actually it's related to `magit` and `vc-mode`.
+
    - Workaround:
      - Revert the buffers manually.
      - `(setq auto-revert-check-vc-info t)` brings the performance issue.
@@ -394,6 +431,7 @@ Run `M-x customize-group RET doom-modeline RET` or set the variables.
    How can I define my own mode-line?
 
    There are two methods.
+
    - If the information is simple, just add to `mode-line-misc-info` or `global-mode-string`.
 
    - Use `doom-modeline-def-modeline` to define your own mode-line and set it as
@@ -401,39 +439,54 @@ Run `M-x customize-group RET doom-modeline RET` or set the variables.
 
      For example:
 
-       ```emacs-lisp
-       ;; Define your custom doom-modeline
-       (doom-modeline-def-modeline 'my-simple-line
-         '(bar matches buffer-info remote-host buffer-position parrot selection-info)
-         '(misc-info minor-modes input-method buffer-encoding major-mode process vcs checker))
+     ```emacs-lisp
+     ;; Define your custom doom-modeline
+     (doom-modeline-def-modeline 'my-simple-line
+       '(bar matches buffer-info remote-host buffer-position parrot selection-info)
+       '(misc-info minor-modes input-method buffer-encoding major-mode process vcs checker))
 
-       ;; Add to `doom-modeline-mode-hook` or other hooks
-       (defun setup-custom-doom-modeline ()
-          (doom-modeline-set-modeline 'my-simple-line 'default))
-       (add-hook 'doom-modeline-mode-hook 'setup-custom-doom-modeline)
-       ```
+     ;; Set default mode-line
+     (add-hook 'doom-modeline-mode-hook
+               (lambda ()
+                 (doom-modeline-set-modeline 'my-simple-line 'default)))
 
-1. How to specify font family in modeline?
+     ;; Configure other mode-lines based on major modes
+     (add-to-list 'doom-modeline-mode-alist '(my-mode . my-simple-line))
 
-    For example:
+     ;; Or disable other mode-lines
+     (setq 'doom-modeline-mode-alist nil)
+     ```
 
-    ``` emacs-lisp
-    (setq doom-modeline-height 1)
-    (set-face-attribute 'mode-line nil :family "Noto Sans" :height 100)
-    (set-face-attribute 'mode-line-inactive nil :family "Noto Sans" :height 100)
-    ```
+1. How to specify font family and size in modeline?
 
-    or
+   For example:
 
-    ```emacs-lisp
-    (custom-set-faces
-      '(mode-line ((t (:family "Noto Sans" :height 0.9))))
-      '(mode-line-inactive ((t (:family "Noto Sans" :height 0.9)))))
-    ```
+   ```emacs-lisp
+   (setq doom-modeline-height 1) ; optional
+   (if (facep 'mode-line-active)
+       (set-face-attribute 'mode-line-active nil :family "Noto Sans" :height 100) ; For 29+
+     (set-face-attribute 'mode-line nil :family "Noto Sans" :height 100))
+   (set-face-attribute 'mode-line-inactive nil :family "Noto Sans" :height 100)
+   ```
 
-    Please refer to
-    [#189](https://github.com/seagle0128/doom-modeline/issues/189) and
-    [#301](https://github.com/seagle0128/doom-modeline/issues/301).
+   or
+
+   ```emacs-lisp
+   (setq doom-modeline-height 1) ; optional
+   (custom-set-faces
+     '(mode-line ((t (:family "Noto Sans" :height 0.9))))
+     '(mode-line-active ((t (:family "Noto Sans" :height 0.9)))) ; For 29+
+     '(mode-line-inactive ((t (:family "Noto Sans" :height 0.9)))))
+   ```
+
+   Please refer to
+   [#189](https://github.com/seagle0128/doom-modeline/issues/189) and
+   [#301](https://github.com/seagle0128/doom-modeline/issues/301).
+
+1. The right side of the modeline is cut off. How to fix it?
+
+   - Tweak `all-the-icons-scale-factor`. e.g. `(setq all-the-icons-scale-factor 1.1)`
+   - Use another font family or size. See above.
 
 1. How to disable symbolic links expanding in mode-line?
 
@@ -441,7 +494,7 @@ Run `M-x customize-group RET doom-modeline RET` or set the variables.
 
    ![Screenshot](https://user-images.githubusercontent.com/9449246/62822565-c3f93380-bb74-11e9-95f6-f9c24a6cbd14.png)
 
-   please try this setting
+   please try this:
 
    ```elisp
    ;; built-in `project' on 26+
@@ -453,6 +506,37 @@ Run `M-x customize-group RET doom-modeline RET` or set the variables.
    For more details, refer to
    [#209](https://github.com/seagle0128/doom-modeline/issues/209) and
    [#224](https://github.com/seagle0128/doom-modeline/issues/224).
+
+1. Can `doom-modeline` show match count while search with `evil-search`?
+
+   Yes. For better experience, should enable `anzu-mode` and load `evil-anzu`.
+
+1. How to show that the R is running in inferior ess R mode?
+
+   The ess R mode modifies `mode-line-buffer-identification` directly to display the status.
+   To display the status in `doom-modeline`, you can add the status to `mode-line-process`
+   or `global-mode-string` as below.
+
+   ```elisp
+   (add-hook 'inferior-ess-mode-hook
+         (lambda ()
+           (add-to-list 'mode-line-process '(:eval (nth ess--busy-count ess-busy-strings)))))
+   ```
+
+1. How to display company mode-line information?
+
+   Enable `doom-modeline-minor-modes` or `(add-to-list 'global-mode-string company-lighter)`.
+
+1. How to display LaTeX compilation information in the mode line?
+
+   Use [process](https://github.com/haji-ali/procress) package.
+   Refer to [#387](https://github.com/seagle0128/doom-modeline/issues/387) for more details.
+
+   ```elisp
+   (require 'procress)
+   (procress-load-default-svg-images)
+   (add-hook 'LaTeX-mode-hook #'procress-auctex-mode)
+   ```
 
 ## Donate
 

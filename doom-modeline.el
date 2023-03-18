@@ -195,7 +195,8 @@ If DEFAULT is non-nil, set the default mode-line for all buffers."
     (circe-mode . special)
     (erc-mode . special)
     (rcirc-mode . special)
-    (dired-mode . dired))
+    (dired-mode . dired)
+    (bookmark-bmenu-mode . bookmark))
   "Alist of major modes and mode-lines.")
 
 (defun doom-modeline-auto-set-modeline ()

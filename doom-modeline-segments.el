@@ -105,6 +105,8 @@
 (defvar winum-auto-setup-mode-line)
 (defvar xah-fly-insert-state-p)
 (defvar display-time-string)
+(defvar gnus-group-mode-line-format)
+(defvar bookmark-bmenu-mode-map)
 
 (declare-function all-the-icons-icon-for-buffer "ext:all-the-icons")
 (declare-function anzu--reset-status "ext:anzu")
@@ -241,7 +243,8 @@
 (declare-function winum--clear-mode-line "ext:winum")
 (declare-function winum--install-mode-line "ext:winum")
 (declare-function winum-get-number-string "ext:winum")
-
+(declare-function bmkp-bmenu-mode-line-string "ext:bookmark+-bmu")
+(declare-function gnus-group-set-mode-line "ext:gnus-group")
 
 
 ;;

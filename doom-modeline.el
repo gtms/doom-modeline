@@ -103,6 +103,10 @@
   '(bar window-number modals matches buffer-info-dired remote-host buffer-position word-count parrot selection-info)
   '(compilation objed-state misc-info battery irc-buffers debug minor-modes input-method indent-info buffer-encoding process major-mode))
 
+(doom-modeline-def-modeline 'bookmark
+  '(bar window-number modals matches buffer-info)
+  '(bmenu major-mode))
+
 (doom-modeline-def-modeline 'project
   '(bar window-number modals buffer-default-directory remote-host buffer-position)
   '(compilation misc-info time battery irc mu4e gnus github debug minor-modes input-method process major-mode))

@@ -435,6 +435,23 @@ read-only or non-existent)."
    (doom-modeline--buffer-state-icon)
    (doom-modeline--buffer-simple-name)))
 
+(doom-modeline-def-segment buffer-info-dired
+  "Display current buffer's name with `doom-modeline-buffer-path' face."
+  (concat
+   (doom-modeline-spc)
+   (doom-modeline--buffer-mode-icon)
+   (doom-modeline--buffer-state-icon)
+   (propertize
+    "%b"
+    'face (doom-modeline-face
+           (if (and doom-modeline-highlight-modified-buffer-name
+                    (buffer-modified-p))
+               'doom-modeline-buffer-modified
+             'doom-modeline-buffer-path))
+    'mouse-face 'doom-modeline-highlight
+    'help-echo "Buffer name\nmouse-1: Previous buffer\nmouse-3: Next buffer"
+    'local-map mode-line-buffer-identification-keymap)))
+
 (doom-modeline-def-segment calc
   "Display calculator icons and info."
   (concat

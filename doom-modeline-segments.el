@@ -452,6 +452,27 @@ read-only or non-existent)."
     'help-echo "Buffer name\nmouse-1: Previous buffer\nmouse-3: Next buffer"
     'local-map mode-line-buffer-identification-keymap)))
 
+(doom-modeline-def-segment bmenu
+  "The `bmenu' segment.
+
+This segment holds the propertized output of the
+`bmkp-bmenu-mode-line-string' function, defined in
+`bookmark+-bmu.el'."
+  (let ((segment
+         (concat
+          (doom-modeline-spc)
+          (propertize
+           (format-mode-line
+            (bmkp-bmenu-mode-line-string))
+           'mouse-face 'mode-line-highlight
+           'local-map bookmark-bmenu-mode-map)
+          (doom-modeline-spc))))
+    (if (doom-modeline--active)
+        segment
+      (propertize
+       segment
+       'face 'mode-line-inactive))))
+
 (doom-modeline-def-segment calc
   "Display calculator icons and info."
   (concat

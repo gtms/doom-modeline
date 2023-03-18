@@ -190,7 +190,8 @@ If DEFAULT is non-nil, set the default mode-line for all buffers."
     (calc-trail-mode . calculator)
     (circe-mode . special)
     (erc-mode . special)
-    (rcirc-mode . special))
+    (rcirc-mode . special)
+    (dired-mode . dired))
   "Alist of major modes and mode-lines.")
 
 (defun doom-modeline-auto-set-modeline ()

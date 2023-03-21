@@ -210,6 +210,9 @@ If DEFAULT is non-nil, set the default mode-line for all buffers."
     (dired-mode . dired)
     (bookmark-bmenu-mode . bookmark)
     (calendar mode . minimal))
+    (gnus-group-mode . gnus-group)
+    (gnus-summary-mode . gnus-summary)
+    (gnus-article-mode . gnus-article)
   "Alist of major modes and mode-lines.")
 
 (defun doom-modeline-auto-set-modeline ()

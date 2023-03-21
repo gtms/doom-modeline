@@ -115,6 +115,10 @@
   '(bar window-number modals matches buffer-info sml)
   '(time major-mode))
 
+(doom-modeline-def-modeline 'gnus-article
+  '(bar window-number modals matches buffer-info buffer-position aml)
+  '(time major-mode))
+
 (doom-modeline-def-modeline 'project
   '(bar window-number modals buffer-default-directory remote-host buffer-position)
   '(compilation misc-info time battery irc mu4e gnus github debug minor-modes input-method process major-mode))

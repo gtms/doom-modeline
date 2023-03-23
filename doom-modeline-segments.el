@@ -1628,8 +1628,7 @@ one. The ignored buffers are excluded unless `aw-ignore-on' is nil."
                        (visible-frame-list))
                       1))
         (propertize (format " %s " num)
-                    'face (doom-modeline-face 'doom-modeline-buffer-major-mode))
-      (doom-modeline-spc))))
+                    'face (doom-modeline-face 'doom-modeline-buffer-major-mode)))))
 
 
 ;;

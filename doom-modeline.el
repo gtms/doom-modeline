@@ -1,11 +1,11 @@
 ;;; doom-modeline.el --- A minimal and modern mode-line -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2018-2020 Vincent Zhang
+;; Copyright (C) 2018-2023 Vincent Zhang
 
 ;; Author: Vincent Zhang <seagle0128@gmail.com>
 ;; Homepage: https://github.com/seagle0128/doom-modeline
-;; Version: 3.3.3
-;; Package-Requires: ((emacs "25.1") (compat "28.1.1.1") (shrink-path "0.2.0"))
+;; Version: 4.0.2
+;; Package-Requires: ((emacs "25.1") (compat "29.1.1.1") (nerd-icons "0.0.1") (shrink-path "0.2.0"))
 ;; Keywords: faces mode-line
 
 ;; This file is not part of GNU Emacs.
@@ -185,22 +185,23 @@ If DEFAULT is non-nil, set the default mode-line for all buffers."
 
 ;; Suppress warnings
 (defvar 2C-mode-line-format)
+(defvar flymake-mode-line-format)
 (defvar helm-ag-show-status-function)
 (declare-function helm-display-mode-line "ext:helm-core")
 
 (defvar doom-modeline-mode-map (make-sparse-keymap))
 
 (defvar doom-modeline-mode-alist
-  '((message-mode . message)
-    (git-commit-mode . message)
-    (magit-mode . vcs)
-    (dashboard-mode . dashboard)
-    (Info-mode .  info)
-    (image-mode . media)
-    (pdf-view-mode . pdf)
-    (org-src-mode . org-src)
-    (paradox-menu-mode . package)
-    (xwidget-webkit-mode . minimal)
+  '((message-mode         . message)
+    (git-commit-mode      . message)
+    (magit-mode           . vcs)
+    (dashboard-mode       . dashboard)
+    (Info-mode            . info)
+    (image-mode           . media)
+    (pdf-view-mode        . pdf)
+    (org-src-mode         . org-src)
+    (paradox-menu-mode    . package)
+    (xwidget-webkit-mode  . minimal)
     (git-timemachine-mode . timemachine)
     (calc-mode . calculator)
     (calc-trail-mode . calculator)
@@ -249,6 +250,12 @@ If DEFAULT is non-nil, set the default mode-line for all buffers."
             (unless (doom-modeline-auto-set-modeline)
               (doom-modeline-set-main-modeline))))
 
+        ;; For flymake
+        (setq flymake-mode-line-format nil) ; remove the lighter of minor mode
+
+        ;; For Eldoc
+        (setq eldoc-message-function #'doom-modeline-eldoc-minibuffer-message)
+
         ;; For two-column editing
         (setq 2C-mode-line-format (doom-modeline 'special))
 
@@ -265,6 +272,12 @@ If DEFAULT is non-nil, set the default mode-line for all buffers."
         (dolist (buf (buffer-list))
           (with-current-buffer buf
             (setq mode-line-format original-format))))
+
+      ;; For flymake
+      (setq flymake-mode-line-format (doom-modeline--original-value 'flymake-mode-line-format))
+
+      ;; For Eldoc
+      (setq eldoc-message-function #'eldoc-minibuffer-message)
 
       ;; For two-column editing
       (setq 2C-mode-line-format (doom-modeline--original-value '2C-mode-line-format))

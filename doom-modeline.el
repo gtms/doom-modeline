@@ -217,7 +217,7 @@ If DEFAULT is non-nil, set the default mode-line for all buffers."
     (gnus-group-mode . gnus-group)
     (gnus-summary-mode . gnus-summary)
     (gnus-article-mode . gnus-article)
-    (calendar-mode . minimal)
+    (calendar-mode . calendar)
     (ivy-occur-mode . minimal)
     (ivy-occur-grep-mode . minimal)
     (bookmark-edit-annotation-mode . minimal)

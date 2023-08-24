@@ -528,6 +528,24 @@ propertized with the face `doom-modeline-emphasis'."
        segment
        'face 'mode-line-inactive))))
 
+(doom-modeline-def-segment cal
+  "The `cal' segment, for use in `calendar-mode' buffers.
+
+This segment holds the string `calendar-mode-line-format',
+propertized with the face `doom-modeline-emphasis'."
+  (let ((segment
+         (concat
+          (doom-modeline-spc)
+          (car calendar-mode-line-format)
+          (doom-modeline-spc))))
+    (if (doom-modeline--active)
+        (propertize
+         segment
+         'face (doom-modeline-face 'doom-modeline-emphasis))
+      (propertize
+       segment
+       'face 'mode-line-inactive))))
+
 (doom-modeline-def-segment calc
   "Display calculator icons and info."
   (concat

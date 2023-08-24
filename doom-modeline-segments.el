@@ -111,6 +111,7 @@
 (defvar display-time-string)
 (defvar gnus-group-mode-line-format)
 (defvar bookmark-bmenu-mode-map)
+(defvar calendar-mode-line-format)
 
 (declare-function anzu--reset-status "ext:anzu")
 (declare-function anzu--where-is-here "ext:anzu")

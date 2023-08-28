@@ -119,6 +119,10 @@
   '(bar window-number modals matches buffer-info buffer-position aml)
   '(time major-mode))
 
+(doom-modeline-def-modeline 'calendar-mode
+  '(bar matches cal)
+  '(major-mode))
+
 (doom-modeline-def-modeline 'calendar
   '(bar matches buffer-info-simple)
   '(cal media-info major-mode))

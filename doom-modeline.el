@@ -125,7 +125,7 @@
 
 (doom-modeline-def-modeline 'calendar
   '(bar matches buffer-info-simple)
-  '(cal media-info major-mode))
+  '(cal-str))
 
 (doom-modeline-def-modeline 'project
   '(bar window-number modals buffer-default-directory remote-host buffer-position)

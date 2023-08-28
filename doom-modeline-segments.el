@@ -112,6 +112,7 @@
 (defvar gnus-group-mode-line-format)
 (defvar bookmark-bmenu-mode-map)
 (defvar calendar-mode-line-format)
+(defvar calendar-str-mode-line)
 
 (declare-function anzu--reset-status "ext:anzu")
 (declare-function anzu--where-is-here "ext:anzu")
@@ -548,6 +549,15 @@ propertized with the face `doom-modeline-emphasis'."
        segment
        'face 'mode-line-inactive))))
 
+(doom-modeline-def-segment cal-str
+  "The `cal-str' segment, for use in `calendar' buffers.
+
+This segment holds the string `calendar-str-mode-line',
+propertized with the face `doom-modeline-emphasis'."
+  (let ((segment
+         (concat
+          (doom-modeline-spc)
+          calendar-str-mode-line
           (doom-modeline-spc))))
     (if (doom-modeline--active)
         (propertize

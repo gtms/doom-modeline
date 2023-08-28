@@ -119,6 +119,14 @@
   '(bar window-number modals matches buffer-info buffer-position aml)
   '(time major-mode))
 
+(doom-modeline-def-modeline 'calendar-mode
+  '(bar matches cal)
+  '(major-mode))
+
+(doom-modeline-def-modeline 'calendar
+  '(bar matches buffer-info-simple)
+  '(cal-str))
+
 (doom-modeline-def-modeline 'project
   '(bar window-number modals buffer-default-directory remote-host buffer-position)
   '(compilation misc-info time battery irc mu4e gnus github debug minor-modes input-method process major-mode))
@@ -213,7 +221,6 @@ If DEFAULT is non-nil, set the default mode-line for all buffers."
     (gnus-group-mode                . gnus-group)
     (gnus-summary-mode              . gnus-summary)
     (gnus-article-mode              . gnus-article)
-    (calendar-mode                  . minimal)
     (ivy-occur-mode                 . minimal)
     (ivy-occur-grep-mode            . minimal)
     (bookmark-edit-annotation-mode  . minimal)

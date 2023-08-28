@@ -111,6 +111,8 @@
 (defvar display-time-string)
 (defvar gnus-group-mode-line-format)
 (defvar bookmark-bmenu-mode-map)
+(defvar calendar-mode-line-format)
+(defvar calendar-str-mode-line)
 
 (declare-function anzu--reset-status "ext:anzu")
 (declare-function anzu--where-is-here "ext:anzu")
@@ -249,6 +251,7 @@
 (declare-function winum-get-number-string "ext:winum")
 (declare-function bmkp-bmenu-mode-line-string "ext:bookmark+-bmu")
 (declare-function gnus-group-set-mode-line "ext:gnus-group")
+(declare-function calendar-string-spread "ext:calendar")
 
 
 ;;
@@ -518,6 +521,43 @@ propertized with the face `doom-modeline-emphasis'."
          (concat
           (doom-modeline-spc)
           (doom-modeline--format-gnus-mode-line 'article)
+          (doom-modeline-spc))))
+    (if (doom-modeline--active)
+        (propertize
+         segment
+         'face (doom-modeline-face 'doom-modeline-emphasis))
+      (propertize
+       segment
+       'face 'mode-line-inactive))))
+
+(doom-modeline-def-segment cal
+  "The `cal' segment, for use in `calendar-mode' buffers.
+
+This segment holds the variable `calendar-mode-line-format',
+propertized with the face `doom-modeline-emphasis'."
+  (let ((segment
+         (concat
+          (doom-modeline-spc)
+          (calendar-string-spread
+           calendar-mode-line-format ?\s 80)
+          (doom-modeline-spc))))
+    (if (doom-modeline--active)
+        (propertize
+         segment
+         'face (doom-modeline-face 'doom-modeline-emphasis))
+      (propertize
+       segment
+       'face 'mode-line-inactive))))
+
+(doom-modeline-def-segment cal-str
+  "The `cal-str' segment, for use in `calendar' buffers.
+
+This segment holds the string `calendar-str-mode-line',
+propertized with the face `doom-modeline-emphasis'."
+  (let ((segment
+         (concat
+          (doom-modeline-spc)
+          calendar-str-mode-line
           (doom-modeline-spc))))
     (if (doom-modeline--active)
         (propertize

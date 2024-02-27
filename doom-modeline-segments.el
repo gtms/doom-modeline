@@ -282,6 +282,9 @@
 (declare-function bmkp-bmenu-mode-line-string "ext:bookmark+-bmu")
 (declare-function gnus-group-set-mode-line "ext:gnus-group")
 (declare-function calendar-string-spread "ext:calendar")
+(declare-function calc-select-buffer "ext:calc")
+(declare-function calc-stack-size "ext:calc")
+(declare-function calc-top "ext:calc")
 
 
 ;;

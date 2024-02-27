@@ -577,6 +577,128 @@ propertized with the face `doom-modeline-emphasis'."
       (doom-modeline-vspc)))
    (doom-modeline--buffer-simple-name)))
 
+(doom-modeline-def-segment calc-str
+  "The calc mode line string, for use in `calc' buffers.
+
+This segment holds the string produced by the `calc-set-mode-line' function."
+  (cl-flet
+      ((calc-mode-line-str ()
+         (save-excursion
+           (calc-select-buffer)
+           (let* ((fmt (car calc-float-format))
+                  (figs (nth 1 calc-float-format)))
+             (format "Calc%s%s: %d %s %s"
+                     (if (and calc-embedded-info
+                              (eq (aref calc-embedded-info 1) (current-buffer)))
+                         "Embed" "")
+                     (if (and (> (length (buffer-name)) 12)
+                              (equal (substring (buffer-name) 0 12)
+                                     "*Calculator*"))
+                         (substring (buffer-name) 12)
+                       "")
+                     calc-internal-prec
+                     (capitalize (symbol-name calc-angle-mode))
+                     (concat
+
+                      ;; Input-related modes
+                      (if (eq calc-algebraic-mode 'total) "Alg* "
+                        (if calc-algebraic-mode "Alg "
+                          (if calc-incomplete-algebraic-mode "Alg[( " "")))
+
+                      ;; Computational modes
+                      (if calc-symbolic-mode "Symb " "")
+                      (cond ((eq calc-matrix-mode 'matrix) "Matrix ")
+                            ((integerp calc-matrix-mode)
+                             (format "Matrix%d " calc-matrix-mode))
+                            ((eq calc-matrix-mode 'sqmatrix) "SqMatrix ")
+                            ((eq calc-matrix-mode 'scalar) "Scalar ")
+                            (t ""))
+                      (if (eq calc-complex-mode 'polar) "Polar " "")
+                      (if calc-prefer-frac "Frac " "")
+                      (cond ((null calc-infinite-mode) "")
+                            ((eq calc-infinite-mode 1) "+Inf ")
+                            (t "Inf "))
+                      (cond ((eq calc-simplify-mode 'none) "NoSimp ")
+                            ((eq calc-simplify-mode 'num) "NumSimp ")
+                            ((eq calc-simplify-mode 'binary)
+                             (format "BinSimp%d " calc-word-size))
+                            ((eq calc-simplify-mode 'alg) "")
+                            ((eq calc-simplify-mode 'ext) "ExtSimp ")
+                            ((eq calc-simplify-mode 'units) "UnitSimp ")
+                            (t "BasicSimp "))
+
+                      ;; Display modes
+                      (cond ((= calc-number-radix 10) "")
+                            ((= calc-number-radix 2) "Bin ")
+                            ((= calc-number-radix 8) "Oct ")
+                            ((= calc-number-radix 16) "Hex ")
+                            (t (format "Radix%d " calc-number-radix)))
+                      (if calc-twos-complement-mode "TwosComp " "")
+                      (if calc-leading-zeros "Zero " "")
+                      (cond ((null calc-language) "")
+                            ((get calc-language 'math-lang-name)
+                             (concat (get calc-language 'math-lang-name) " "))
+                            (t (concat
+                                (capitalize (symbol-name calc-language))
+                                " ")))
+                      (cond ((eq fmt 'float)
+                             (if (zerop figs) "" (format "Norm%d " figs)))
+                            ((eq fmt 'fix) (format "Fix%d " figs))
+                            ((eq fmt 'sci)
+                             (if (zerop figs) "Sci " (format "Sci%d " figs)))
+                            ((eq fmt 'eng)
+                             (if (zerop figs) "Eng " (format "Eng%d " figs))))
+                      (cond ((not calc-display-just)
+                             (if calc-display-origin
+                                 (format "Left%d " calc-display-origin) ""))
+                            ((eq calc-display-just 'right)
+                             (if calc-display-origin
+                                 (format "Right%d " calc-display-origin)
+                               "Right "))
+                            (t
+                             (if calc-display-origin
+                                 (format "Center%d " calc-display-origin)
+                               "Center ")))
+                      (cond ((integerp calc-line-breaking)
+                             (format "Wid%d " calc-line-breaking))
+                            (calc-line-breaking "")
+                            (t "Wide "))
+
+                      ;; Miscellaneous other modes/indicators
+                      (if calc-assoc-selections "" "Break ")
+                      (cond ((eq calc-mode-save-mode 'save) "Save ")
+                            ((not calc-embedded-info) "")
+                            ((eq calc-mode-save-mode 'local) "Local ")
+                            ((eq calc-mode-save-mode 'edit) "LocEdit ")
+                            ((eq calc-mode-save-mode 'perm) "LocPerm ")
+                            ((eq calc-mode-save-mode 'global) "Global ")
+                            (t ""))
+                      (if calc-auto-recompute "" "Manual ")
+                      (if (and (fboundp 'calc-gnuplot-alive)
+                               (calc-gnuplot-alive)) "Graph " "")
+                      (if (and calc-embedded-info
+                               (> (calc-stack-size) 0)
+                               (calc-top 1 'sel)) "Sel " "")
+                      (if calc-display-dirty "Dirty " "")
+                      (if calc-option-flag "Opt " "")
+                      (if calc-inverse-flag "Inv " "")
+                      (if calc-hyperbolic-flag "Hyp " "")
+                      (if calc-keep-args-flag "Keep " "")
+                      (if (/= calc-stack-top 1) "Narrow " "")
+                      (apply #'concat calc-other-modes)))))))
+    (let ((segment
+           (concat
+            (doom-modeline-spc)
+            (calc-mode-line-str)
+            (doom-modeline-spc))))
+      (if (doom-modeline--active)
+          (propertize
+           segment
+           'face (doom-modeline-face 'doom-modeline-emphasis))
+        (propertize
+         segment
+         'face 'mode-line-inactive)))))
+
 (doom-modeline-def-segment buffer-default-directory
   "Displays `default-directory' with the icon and state.
 

@@ -172,8 +172,8 @@
   '(misc-info time minor-modes indent-info buffer-encoding major-mode))
 
 (doom-modeline-def-modeline 'calculator
-  '(window-number modals matches calc buffer-position)
-  '(misc-info time minor-modes process major-mode))
+  '(window-number modals matches calc)
+  '(calc-str misc-info minor-modes process major-mode))
 
 
 ;;

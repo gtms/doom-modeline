@@ -173,7 +173,7 @@
 
 (doom-modeline-def-modeline 'calculator
   '(window-number modals matches calc buffer-position)
-  '(misc-info time minor-modes process major-mode))
+  '(calc-str misc-info minor-modes process major-mode))
 
 
 ;;

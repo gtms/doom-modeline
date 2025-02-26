@@ -5,3 +5,9 @@ personal changes.
 
 * Changes
 ** Move ‘major-mode’ to the end of the mode line
+** Create the ‘dired’ modeline
+Display the name of dired buffers with ‘doom-modeline-buffer-path’ face.
+Changes include:
+  - define the segment ‘buffer-info-dired’
+  - define the ‘dired’ mode line
+  - Register ‘dired’ mode line with ‘doom-modeline-alist’

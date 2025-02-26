@@ -147,6 +147,10 @@
   '(window-number modals matches calc buffer-position)
   '(misc-info minor-modes process major-mode))
 
+(doom-modeline-def-modeline 'dired
+  '(bar window-number modals matches buffer-info-dired remote-host buffer-position word-count parrot selection-info)
+  '(compilation objed-state misc-info battery irc-buffers debug minor-modes input-method indent-info buffer-encoding process major-mode))
+
 
 ;;
 ;; Interfaces
@@ -187,7 +191,8 @@ If DEFAULT is non-nil, set the default mode-line for all buffers."
     (calc-trail-mode      . calculator)
     (circe-mode           . special)
     (erc-mode             . special)
-    (rcirc-mode           . special))
+    (rcirc-mode           . special)
+    (dired-mode           . dired))
   "Alist of major modes and mode-lines.")
 
 (defun doom-modeline-auto-set-modeline ()

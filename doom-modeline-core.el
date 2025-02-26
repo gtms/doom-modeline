@@ -1743,7 +1743,97 @@ Example:
      ;; File name
      (propertize (file-name-nondirectory file-path)
                  'face 'doom-modeline-buffer-file))))
+
+;; Gnus-specific definitions
+(defvar gnus-article-buffer)
+(defvar gnus-current-article)
+(defvar gnus-current-headers)
+(defvar gnus-mode-non-string-length)
+(defvar gnus-newsgroup-name)
+(defvar gnus-newsgroup-reads)
+(defvar gnus-newsgroup-unreads)
+(defvar gnus-newsgroup-unselected)
+(defvar gnus-summary-buffer)
+(defvar gnus-tmp-article-number)
+(defvar gnus-tmp-group-name)
+(defvar gnus-tmp-header)
+(defvar gnus-tmp-subject)
+(defvar gnus-tmp-unread)
+(defvar gnus-tmp-unread-and-unselected)
+(defvar gnus-tmp-unselected)
+(defvar gnus-updated-mode-lines)
 
+(declare-function gnus-mode-string-quote "ext:gnus-util")
+(declare-function mail-header-p "ext:nnheader")
+(declare-function mail-header-subject "ext:nnheader")
+
+(defun doom-modeline--format-gnus-mode-line (where)
+  "Return formatted string for the relevant Gnus WHERE mode line segment.
+
+This definition is taken ispis verbis from the
+`gnus-set-mode-line' definition laid out in `gnus-sum.el', except
+it returns the relevant formatted string instead of updating the
+mode line.  WHERE specifies which mode line to format, taken
+from {summary, article}.  Rather than declaring all the
+Gnus-specific constructs herein, we pre-emptively require Gnus as
+the top declaration."
+  (when (and (memq where gnus-updated-mode-lines)
+             (symbol-value
+              (intern (format "gnus-%s-mode-line-format-spec" where))))
+    (let (mode-string)
+      ;; We evaluate this in the summary buffer since these
+      ;; variables are buffer-local to that buffer.
+      (with-current-buffer gnus-summary-buffer
+        ;; We bind all these variables that are used in the `eval' form
+        ;; below.
+        (let* ((mformat (symbol-value
+                         (intern
+                          (format "gnus-%s-mode-line-format-spec" where))))
+               (gnus-tmp-group-name (gnus-mode-string-quote
+                                     gnus-newsgroup-name))
+               (gnus-tmp-article-number (or gnus-current-article 0))
+               (gnus-tmp-unread gnus-newsgroup-unreads)
+               (gnus-tmp-unread-and-unticked (length gnus-newsgroup-unreads))
+               (gnus-tmp-unselected (length gnus-newsgroup-unselected))
+               (gnus-tmp-unread-and-unselected
+                (cond ((and (zerop gnus-tmp-unread-and-unticked)
+                            (zerop gnus-tmp-unselected))
+                       "")
+                      ((zerop gnus-tmp-unselected)
+                       (format "{%d more}" gnus-tmp-unread-and-unticked))
+                      (t (format "{%d(+%d) more}"
+                                 gnus-tmp-unread-and-unticked
+                                 gnus-tmp-unselected))))
+               (gnus-tmp-subject
+                (if (and gnus-current-headers
+                         (mail-header-p gnus-current-headers))
+                    (gnus-mode-string-quote
+                     (mail-header-subject gnus-current-headers))
+                  ""))
+               bufname-length max-len
+               gnus-tmp-header) ;; passed as argument to any user-format-funcs
+          (setq mode-string (eval mformat t))
+          (setq bufname-length (if (string-match "%b" mode-string)
+                                   (- (length
+                                       (buffer-name
+                                        (if (eq where 'summary)
+                                            nil
+                                          (get-buffer gnus-article-buffer))))
+                                      2)
+                                 0))
+          (setq max-len (max 4 (if gnus-mode-non-string-length
+                                   (- (window-width)
+                                      gnus-mode-non-string-length
+                                      bufname-length)
+                                 (length mode-string))))
+          ;; We might have to chop a bit of the string off...
+          (when (> (length mode-string) max-len)
+            (setq mode-string
+                  (truncate-string-to-width
+                   mode-string (- max-len 3) nil nil t)))))
+      ;; Return mode-string.
+      mode-string)))
+
 (provide 'doom-modeline-core)
 
 ;;; doom-modeline-core.el ends here

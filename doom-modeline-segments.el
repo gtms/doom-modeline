@@ -111,6 +111,7 @@
 (defvar visual-replace--match-ovs)
 (defvar winum-auto-setup-mode-line)
 (defvar xah-fly-insert-state-p)
+(defvar gnus-group-mode-line-format)
 
 (declare-function anzu--reset-status "ext:anzu")
 (declare-function anzu--where-is-here "ext:anzu")
@@ -254,6 +255,7 @@
 (declare-function winum--clear-mode-line "ext:winum")
 (declare-function winum--install-mode-line "ext:winum")
 (declare-function winum-get-number-string "ext:winum")
+(declare-function gnus-group-set-mode-line "ext:gnus-group")
 
 
 
@@ -780,6 +782,60 @@ Uses `nerd-icons-octicon' to fetch the icon."
     'mouse-face 'doom-modeline-highlight
     'help-echo "Buffer name\nmouse-1: Previous buffer\nmouse-3: Next buffer"
     'local-map mode-line-buffer-identification-keymap)))
+
+(doom-modeline-def-segment gml
+  "The `gml' segment, for use in `gnus-group-mode' buffers.
+
+This segment holds the string `gnus-group-mode-line-format',
+propertized with the face `doom-modeline-emphasis'."
+  (let ((segment
+         (concat
+          (doom-modeline-spc)
+          (car (gnus-group-set-mode-line))
+          (doom-modeline-spc))))
+    (if (doom-modeline--active)
+        (propertize
+         segment
+         'face (doom-modeline-face 'doom-modeline-emphasis))
+      (propertize
+       segment
+       'face 'mode-line-inactive))))
+
+(doom-modeline-def-segment sml
+  "The `sml' segment, for use in `gnus-summary-mode' buffers.
+
+This segment holds the string `gnus-summary-mode-line-format',
+propertized with the face `doom-modeline-emphasis'."
+  (let ((segment
+         (concat
+          (doom-modeline-spc)
+          (doom-modeline--format-gnus-mode-line 'summary)
+          (doom-modeline-spc))))
+    (if (doom-modeline--active)
+        (propertize
+         segment
+         'face (doom-modeline-face 'doom-modeline-emphasis))
+      (propertize
+       segment
+       'face 'mode-line-inactive))))
+
+(doom-modeline-def-segment aml
+  "The `aml' segment, for use in `gnus-article-mode' buffers.
+
+This segment holds the string `gnus-article-mode-line-format',
+propertized with the face `doom-modeline-emphasis'."
+  (let ((segment
+         (concat
+          (doom-modeline-spc)
+          (doom-modeline--format-gnus-mode-line 'article)
+          (doom-modeline-spc))))
+    (if (doom-modeline--active)
+        (propertize
+         segment
+         'face (doom-modeline-face 'doom-modeline-emphasis))
+      (propertize
+       segment
+       'face 'mode-line-inactive))))
 
 
 ;;

@@ -11,3 +11,14 @@ Changes include:
   - define the segment ‘buffer-info-dired’
   - define the ‘dired’ mode line
   - Register ‘dired’ mode line with ‘doom-modeline-alist’
+** Create the ‘gnus’ modelines
+Sets the modeline of Gnus relevant buffers with the ‘gnus-set-mode-line’ string.
+Changes include:
+  - Write ‘doom-modeline--format-gnus-mode-line’
+  - Define the ‘gml’ segment
+  - Define the ‘sml’ segment
+  - Define the ‘aml’ segment
+  - Define the ‘gnus-group’ mode line
+  - Define the ‘gnus-summary’ mode line
+  - Define the ‘gnus-article’ mode line
+  - Register ‘gnus-{group,summary,article}’ with ‘doom-modeline-alist’

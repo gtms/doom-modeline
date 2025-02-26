@@ -22,3 +22,9 @@ Changes include:
   - Define the ‘gnus-summary’ mode line
   - Define the ‘gnus-article’ mode line
   - Register ‘gnus-{group,summary,article}’ with ‘doom-modeline-alist’
+** Refashion the ‘calendar’ modeline
+Allows the calendar modeline to access the ‘calendar-mode-line-format’ string.
+Changes include:
+  - Define the ‘cal’ and ‘cal-str’ segments
+  - Redefine the ‘calendar’ and define the ‘calendar-mode’ mode lines
+  - Register ‘calendar’ mode line with ‘doom-modeline-alist’

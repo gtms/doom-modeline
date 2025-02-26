@@ -163,6 +163,14 @@
   '(bar window-number modals matches buffer-info buffer-position aml)
   '(time major-mode))
 
+(doom-modeline-def-modeline 'calendar
+  '(bar matches buffer-info-simple)
+  '(cal-str))
+
+(doom-modeline-def-modeline 'calendar-mode
+  '(bar matches cal)
+  '(major-mode))
+
 
 ;;
 ;; Interfaces
@@ -207,7 +215,8 @@ If DEFAULT is non-nil, set the default mode-line for all buffers."
     (dired-mode           . dired)
     (gnus-group-mode      . gnus-group)
     (gnus-summary-mode    . gnus-summary)
-    (gnus-article-mode    . gnus-article))
+    (gnus-article-mode    . gnus-article)
+    (calendar-mode        . calendar))
   "Alist of major modes and mode-lines.")
 
 (defun doom-modeline-auto-set-modeline ()

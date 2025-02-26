@@ -2,3 +2,6 @@
 This file records my personal changelog to the [[https://github.com/seagle0128/doom-modeline][doom-modeline]] repository.  The
 branch ‘original’ is synced with upstream; and the branch ‘ayah’ contains my
 personal changes.
+
+* Changes
+** Move ‘major-mode’ to the end of the mode line

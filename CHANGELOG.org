@@ -3,6 +3,11 @@ This file records my personal changelog to the [[https://github.com/seagle0128/d
 branch ‘original’ is synced with upstream; and the branch ‘ayah’ contains my
 personal changes.
 
+** Update from upstream
+To update from upstream, switch to the branch ‘original’, and fetch from the
+source repository.  Then switch back to the ‘ayah’ branch and merge the updated
+‘original’ branch into it.
+
 * Changes
 ** Move ‘major-mode’ to the end of the mode line
 ** Create the ‘dired’ modeline

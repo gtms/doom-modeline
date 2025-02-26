@@ -145,7 +145,7 @@
 
 (doom-modeline-def-modeline 'calculator
   '(window-number modals matches calc buffer-position)
-  '(misc-info minor-modes process major-mode))
+  '(calc-str misc-info minor-modes process major-mode))
 
 (doom-modeline-def-modeline 'dired
   '(bar window-number modals matches buffer-info-dired remote-host buffer-position word-count parrot selection-info)

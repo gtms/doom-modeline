@@ -28,3 +28,9 @@ Changes include:
   - Define the ‘cal’ and ‘cal-str’ segments
   - Redefine the ‘calendar’ and define the ‘calendar-mode’ mode lines
   - Register ‘calendar’ mode line with ‘doom-modeline-alist’
+** Refashion the ‘calc’ modeline
+Allows the calc modeline to access the ‘calc-set-mode-line’ string.
+Changes include:
+  - Define the ‘calc-str’ segment
+  - Declare the variables and functions referred to by the ‘calc-str’ segment
+  - Redefine the ‘calculator’ mode line

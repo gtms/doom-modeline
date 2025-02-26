@@ -1740,8 +1740,7 @@ regions, 5. The current/total for the highlight term (with `symbol-overlay'),
     (concat
      (if doom-modeline-hud
          (doom-modeline--hud)
-       (doom-modeline--bar))
-     (doom-modeline-spc))))
+       (doom-modeline--bar)))))
 
 (doom-modeline-def-segment hud
   "Powerline's hud segment reimplemented in the style of bar segment."

@@ -97,7 +97,7 @@
 
 (doom-modeline-def-modeline 'special
   '(eldoc bar window-number modals matches buffer-info remote-host buffer-position word-count parrot selection-info)
-  '(compilation objed-state misc-info battery irc-buffers debug minor-modes input-method indent-info buffer-encoding process time major-mode))
+  '(compilation objed-state misc-info battery irc-buffers debug minor-modes input-method indent-info buffer-encoding process major-mode))
 
 (doom-modeline-def-modeline 'project
   '(bar window-number modals buffer-default-directory remote-host buffer-position)
@@ -117,7 +117,7 @@
 
 (doom-modeline-def-modeline 'info
   '(bar window-number modals buffer-info info-nodes buffer-position parrot selection-info)
-  '(compilation misc-info buffer-encoding time major-mode))
+  '(compilation misc-info buffer-encoding major-mode))
 
 (doom-modeline-def-modeline 'media
   '(bar window-number modals buffer-size buffer-info)

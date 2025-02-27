@@ -41,3 +41,8 @@ Changes include:
   - Redefine the ‘calculator’ mode line
 
 ** Fix obnoxious space between ‘bar’ and ‘matches’ segments
+
+** Remove ‘time’ segment from ‘special’ and ‘info’ mode lines
+:PROPERTIES:
+:ID:       40c5a5a0-a8f4-4665-bec3-bf33c663288a
+:END:
